@@ -1,0 +1,223 @@
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer{
+
+background:var(--verde);
+
+color:white;
+
+padding-top:60px;
+
+}
+
+/* contenedor */
+
+.footer-container{
+
+max-width:1200px;
+
+margin:auto;
+
+display:flex;
+
+gap:40px;
+
+flex-wrap:wrap;
+
+padding:0 40px;
+
+}
+
+/* columnas */
+
+.footer-col{
+
+flex:1;
+
+min-width:200px;
+
+}
+
+/* logo */
+
+.footer-logo{
+
+height:55px;
+
+margin-bottom:15px;
+
+}
+
+/* titulos */
+
+.footer-col h4{
+
+color:var(--amarillo);
+
+margin-bottom:15px;
+
+font-size:18px;
+
+}
+
+/* enlaces */
+
+.footer-col ul{
+
+list-style:none;
+
+padding:0;
+
+}
+
+.footer-col ul li{
+
+margin-bottom:8px;
+
+}
+
+.footer-col a{
+
+color:white;
+
+text-decoration:none;
+
+transition:0.3s;
+
+}
+
+.footer-col a:hover{
+
+color:var(--amarillo);
+
+}
+
+/* redes */
+
+.footer-redes{
+
+display:flex;
+
+flex-direction:column;
+
+gap:8px;
+
+}
+
+/* parte inferior */
+
+.footer-bottom{
+
+text-align:center;
+
+border-top:1px solid rgba(255,255,255,0.2);
+
+margin-top:40px;
+
+padding:20px;
+
+font-size:14px;
+
+color:#ddd;
+
+}
+
+
+/* REDES SOCIALES */
+
+.footer-redes{
+
+display:flex;
+
+flex-direction:row;
+
+gap:15px;
+
+margin-top:15px;
+
+}
+.footer-redes a{
+
+width:38px;
+height:38px;
+
+display:flex;
+
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:rgba(255,255,255,0.15);
+
+color:white;
+
+font-size:16px;
+
+transition:0.3s;
+
+}
+
+.footer-redes a:hover{
+
+background:var(--amarillo);
+
+color:var(--verde);
+
+transform:translateY(-3px);
+
+}
+
+.footer-col p{
+
+line-height:1.6;
+
+margin-bottom:12px;
+
+font-size:14px;
+
+color:#eaeaea;
+
+}
+
+.footer-col strong{
+
+color:var(--amarillo);
+
+}
+
+/* LINEA DECORATIVA ANTES DEL FOOTER */
+
+.footer-linea{
+
+width:100%;
+
+height:6px;
+
+background:linear-gradient(
+90deg,
+var(--amarillo),
+var(--amarillo-osc)
+);
+
+}
+
+@media(max-width:900px){
+
+.footer-container{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.footer-redes{
+
+align-items:center;
+
+}
+
+}

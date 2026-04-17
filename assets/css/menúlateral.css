@@ -1,0 +1,148 @@
+/* MENU LATERAL */
+
+.menu-lateral{
+
+position:fixed;
+top:0;
+right:-360px;
+
+width:340px;
+height:100vh;
+
+background:white;
+
+box-shadow:-3px 0 20px rgba(0,0,0,0.2);
+
+transition:0.45s ease;
+
+z-index:1000;
+
+display:flex;
+flex-direction:column;
+
+}
+
+/* MENU ABIERTO */
+
+.menu-lateral.activo{
+right:0;
+}
+
+/* BARRA SUPERIOR */
+
+.menu-top{
+
+background:var(--verde);
+
+height:90px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+position:relative;
+
+}
+
+/* LOGO */
+
+.menu-logo{
+height:58px;
+border-radius:10px;
+}
+.menu-logo:hover{
+transform:scale(1.05);
+transition:0.2s;
+}
+
+/* BOTON CERRAR */
+
+.menu-close{
+
+position:absolute;
+right:20px;
+top:50%;
+transform:translateY(-50%);
+
+background:none;
+border:none;
+
+font-size:28px;
+color:white;
+
+cursor:pointer;
+
+}
+
+/* LINKS */
+
+.menu-links{
+
+list-style:none;
+padding:30px;
+margin:0;
+
+display:flex;
+flex-direction:column;
+gap:10px;
+
+}
+
+.menu-links li{
+
+border-bottom:1px solid var(--gris2);
+
+}
+
+.menu-links a{
+
+display:block;
+
+padding:14px 5px;
+
+text-decoration:none;
+
+color:var(--texto);
+
+font-size:18px;
+
+transition:0.2s;
+
+}
+
+/* HOVER */
+
+.menu-links a:hover{
+
+color:var(--verde);
+
+padding-left:10px;
+
+}
+
+/* OVERLAY */
+
+.overlay{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.45);
+
+opacity:0;
+visibility:hidden;
+
+transition:0.3s;
+
+z-index:900;
+
+}
+
+.overlay.activo{
+opacity:1;
+visibility:visible;
+}

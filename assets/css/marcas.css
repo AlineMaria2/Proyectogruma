@@ -1,0 +1,147 @@
+/* SECCION MARCAS */
+
+.marcas{
+
+background:var(--verde);
+padding:70px 40px 60px;
+position:relative;
+overflow:hidden;
+
+}
+
+/* TITULO */
+
+.marcas-titulo{
+display:flex;
+justify-content:center;
+margin-top:-35px;
+margin-bottom:40px;
+
+}
+
+
+.marcas-titulo h2{
+
+background:var(--amarillo);
+
+padding:14px 50px;
+
+border-radius:14px;
+
+font-size:18px;
+
+letter-spacing:3px;
+
+margin:0;
+
+box-shadow:0 6px 15px rgba(0,0,0,0.25);
+
+}
+
+/* CONTENEDOR SLIDER */
+
+.marcas-slider{
+
+display:flex;
+gap:30px;
+
+justify-content:center;
+align-items:center;
+
+flex-wrap:wrap;
+
+}
+
+/* TARJETAS DE MARCA */
+
+.marca-card{
+
+background:white;
+
+padding:15px 25px;
+
+border-radius:15px;
+
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
+
+transition:all 0.3s ease;
+
+cursor:pointer;
+
+}
+
+/* LOGO */
+
+.marca-card img{
+
+height:50px;
+display:block;
+
+}
+
+/* HOVER */
+
+.marca-card:hover{
+
+transform:translateY(-6px) scale(1.05);
+
+box-shadow:0 8px 18px rgba(0,0,0,0.25);
+
+}
+
+.marca-productos{
+
+margin-bottom:70px;
+
+}
+
+.marca-titulo{
+
+font-size:28px;
+
+color:var(--azul);
+
+margin-bottom:25px;
+
+border-left:6px solid var(--amarillo);
+
+padding-left:12px;
+
+}
+@media (max-width:768px){
+
+.marcas-slider{
+
+flex-wrap:wrap;
+gap:20px;
+
+}
+
+.marca-card img{
+
+height:40px;
+
+}
+
+}
+.marcas-slider{
+
+animation:marcasMovimiento 25s linear infinite;
+
+}
+
+@keyframes marcasMovimiento{
+
+0%{
+transform:translateX(0);
+}
+
+50%{
+transform:translateX(-30px);
+}
+
+100%{
+transform:translateX(0);
+}
+
+}

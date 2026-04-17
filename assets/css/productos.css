@@ -1,0 +1,215 @@
+/* =========================
+   PRODUCTOS
+   ========================= */
+
+.productos{
+
+padding:90px 60px;
+
+background:#f6f6f6;
+
+text-align:center;
+
+}
+
+.productos-header{
+
+margin-bottom:50px;
+
+}
+
+.productos-header h2{
+
+color:var(--verde);
+
+font-size:38px;
+
+}
+
+.productos-container{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:30px;
+
+max-width:1200px;
+
+margin:auto;
+
+}
+
+/* tarjeta */
+
+.producto-card{
+
+background:white;
+
+padding:25px;
+
+border-radius:15px;
+
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+
+transition:0.3s;
+
+}
+
+.producto-card:hover{
+
+transform:translateY(-6px);
+
+}
+
+/* imagen */
+
+.producto-card img{
+
+width:100%;
+
+height:200px;
+
+object-fit:contain;
+
+margin-bottom:15px;
+
+}
+
+/* precio */
+
+.precio{
+
+color:var(--verde);
+
+font-weight:bold;
+
+margin:10px 0;
+
+}
+
+/* botón */
+
+.btn-producto{
+
+display:inline-block;
+
+background:var(--amarillo);
+
+color:var(--verde);
+
+padding:10px 20px;
+
+border-radius:25px;
+
+text-decoration:none;
+
+font-weight:600;
+
+}
+
+/* =========================
+   DETALLE PRODUCTO
+   ========================= */
+
+.detalle-producto{
+
+padding:90px 60px;
+
+background:#f6f6f6;
+
+}
+
+.detalle-container{
+
+max-width:1100px;
+
+margin:auto;
+
+display:flex;
+
+gap:60px;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+}
+
+/* imagen */
+
+.detalle-img{
+
+flex:1;
+
+text-align:center;
+
+}
+
+.detalle-img img{
+
+max-width:400px;
+
+width:100%;
+
+object-fit:contain;
+
+}
+
+/* info */
+
+.detalle-info{
+
+flex:1;
+
+}
+
+.detalle-info h2{
+
+color:var(--verde);
+
+font-size:36px;
+
+margin-bottom:10px;
+
+}
+
+.detalle-precio{
+
+font-size:24px;
+
+color:var(--azul);
+
+font-weight:bold;
+
+margin-bottom:20px;
+
+}
+
+.detalle-desc{
+
+line-height:1.7;
+
+color:#444;
+
+margin-bottom:30px;
+
+}
+
+/* botón volver */
+
+.btn-volver{
+
+background:var(--amarillo);
+
+color:var(--verde);
+
+padding:12px 25px;
+
+border-radius:25px;
+
+text-decoration:none;
+
+font-weight:600;
+
+}
