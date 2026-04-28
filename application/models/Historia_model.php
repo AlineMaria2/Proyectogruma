@@ -25,5 +25,12 @@ $query = $this->db->get('historia');
 return $query->result();
 
 }
-
+public function buscar($query) {
+    $this->db->select('*');
+    $this->db->from('historia'); // Tu tabla de la base de datos
+    $this->db->like('titulo', $query);
+    $this->db->or_like('descripcion', $query);
+    $query = $this->db->get();
+    return $query->result();
+} 
 }

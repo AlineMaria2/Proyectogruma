@@ -1,3 +1,4 @@
+
 :root {
   --verde: #007A3D;
   --verde-claro: #00a651;
@@ -11,51 +12,51 @@
   --sub: #555;
 }
 
-/* =========================
-   RESET Y GLOBAL
-   ========================= */
-* {
-  box-sizing: border-box;
-}
-
+/* 1. RESET Y AJUSTE DE CUERPO */
 body {
-  margin: 0 !important;
-  padding: 0 !important;
-  padding-top: 80px; /* Evita que el contenido se meta bajo el menú */
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-top: 80px; 
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 
-/* =========================
-   NAVBAR (FIJA Y CORREGIDA)
-   ========================= */
+/* 2. NAVBAR */
 .navbar {
-    background: #ff00ff !important; /* ROSA FUCSIA */
+    background: rgba(0, 122, 61, 0.95) !important; 
+    backdrop-filter: blur(10px); 
+    
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    height: 80px !important;
-    z-index: 99999 !important;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
+    height: 80px; 
+    z-index: 9999; 
+  
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important; 
+    justify-content: space-between !important; 
+    padding: 0 50px !important; 
+    box-sizing: border-box;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    transition: 0.3s;    
 }
-
 /* LOGO */
 .logo img {
-  height: 55px;
-  display: block;
+    height: 50px; 
+    display: block;
 }
 
-/* MENU */
+/* MENU CENTRALIZADO */
 .menu {
   list-style: none;
   display: flex;
-  gap: 35px;
-  margin: 0;
-  padding: 0;
+  gap: 20px; 
+  margin: 0 !important;
+  PADDING: 0 !IMPORTANT;
+  FLEX-GROW: 1; 
+  JUSTIFY-CONTENT: CENTER; 
 }
 
 .menu li {
@@ -66,19 +67,24 @@ body {
   text-decoration: none;
   color: var(--blanco);
   font-weight: 600;
-  padding: 10px 18px;
-  border-radius: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
   transition: 0.2s;
+  FONT-SIZE: 14PX; 
+  TEXT-ALIGN: CENTER;
+  DISPLAY: BLOCK;
 }
 
 .menu a:hover {
   background: var(--verde-claro);
 }
 
+
+
 /* SECCION ACTIVA */
 .activo a {
-  border: 3px solid var(--amarillo);
-  border-radius: 12px;
+  border: 2px solid var(--amarillo);
+  border-radius: 10px;
 }
 
 /* TOGGLE (PARA MÓVILES) */
@@ -89,19 +95,12 @@ body {
   cursor: pointer;
 }
 
-/* =========================
-   BANNER / SLIDER
-   ========================= */
+/* BANNER / SLIDER */
 .banner-slider {
   width: 100%;
   aspect-ratio: 16/6;
   overflow: hidden;
   position: relative;
-}
-
-.swiper-slide {
-  width: 100%;
-  height: 100%;
 }
 
 .swiper-slide img {
@@ -110,46 +109,7 @@ body {
   object-fit: cover;
 }
 
-/* PUNTOS INDICADORES */
-.swiper-pagination-bullet {
-  background: white;
-  opacity: 0.6;
-  transition: 0.3s;
-}
-
-.swiper-pagination-bullet-active {
-  border: 2px solid #FFD100;
-  background: transparent;
-  opacity: 1;
-}
-
-/* FLECHAS */
-.swiper-button-next,
-.swiper-button-prev {
-  background: transparent;
-  border: none;
-  width: auto;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 40px;
-  color: rgb(134, 133, 133);
-}
-
-.swiper-button-next:hover::after,
-.swiper-button-prev:hover::after {
-  color: #007A3D;
-}
-
-/* =========================
-   SECCION MAPA
-   ========================= */
+/* SECCION MAPA */
 .mapa {
   position: relative;
   width: 100%;
@@ -170,12 +130,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(0,122,61,0.85) 0%,
-    rgba(0,122,61,0.65) 40%,
-    rgba(0,122,61,0) 80%
-  );
+  background: linear-gradient(90deg, rgba(0,122,61,0.85) 0%, rgba(0,122,61,0.65) 40%, rgba(0,122,61,0) 80%);
   display: flex;
   align-items: center;
   z-index: 2;
@@ -187,37 +142,8 @@ body {
   color: white;
 }
 
-.mapa-info h2 {
-  font-size: 42px;
-  margin-bottom: 15px;
-}
-
-.mapa-info p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 25px;
-}
-
-.mapa-btn {
-  display: inline-block;
-  background: var(--amarillo);
-  color: var(--verde);
-  padding: 14px 28px;
-  border-radius: 30px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.mapa-btn:hover {
-  background: var(--amarillo-osc);
-  transform: translateY(-3px);
-}
-
-/* =========================
-   RESPONSIVE (MEDIA QUERIES)
-   ========================= */
-@media (max-width: 1200px) {
+/* RESPONSIVE */
+@media (max-width: 1100px) {
   .menu-toggle {
     display: block;
   }
@@ -231,45 +157,40 @@ body {
     flex-direction: column;
     align-items: center;
     display: none;
+    PADDING: 20PX 0 !IMPORTANT;
   }
 
   .menu.show {
     display: flex;
   }
 
-  .menu li {
-    width: 100%;
-    text-align: center;
-    padding: 15px 0;
+  .search-bar {
+    MARGIN-LEFT: AUTO;
+    MARGIN-RIGHT: 20PX;
   }
-
-  .mapa-info {
-    margin-left: 40px;
-  }
+  .menu-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
 }
 
-@media (max-width: 900px) {
-  .mapa {
-    height: 450px;
-  }
-
-  .mapa-overlay {
-    background: rgba(0,122,61,0.75);
-    justify-content: center;
-    text-align: center;
-  }
-
-  .mapa-info {
-    margin: 0 30px;
-  }
-
-  .mapa-info h2 {
-    font-size: 32px;
-  }
+.menu-links li {
+    margin-left: 15px; 
 }
 
-@media (max-width: 768px) {
-  .banner-slider {
-    height: 250px;
-  }
+.search-container {
+    display: flex;
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 2px 8px;
+    align-items: center;
+    border: 1px solid #ccc;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    font-size: 0.85rem;
+    width: 130px;
+}
 }

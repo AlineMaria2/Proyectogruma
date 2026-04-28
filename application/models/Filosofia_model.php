@@ -25,5 +25,10 @@ $query = $this->db->get('filosofia');
 return $query->result();
 
 }
+public function buscar($q) {
+    $this->db->like('titulo', $q);
+    $this->db->or_like('descripcion', $q);
+    return $this->db->get('Filosofia')->result(); // Ajusta al nombre de tu tabla
+}
 
 }

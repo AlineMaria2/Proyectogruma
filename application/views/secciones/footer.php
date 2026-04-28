@@ -234,7 +234,115 @@ threshold:0.5
 elementos.forEach(el=>observer.observe(el));
 });
 </script>
+<style>
+    #accessibilityBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: white;
+        border: 3px solid #00833e; /* Cambié a verde para que combine con Gruma */
+        border-radius: 50%;
+        width: 65px;
+        height: 65px;
+        font-size: 28px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000; /* Para que siempre esté por encima de todo */
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    }
 
+    #menuAccesibilidad {
+        display: none; /* Oculto por defecto */
+        position: fixed;
+        bottom: 95px;
+        right: 20px;
+        background: white;
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+        z-index: 1000;
+        width: 200px;
+    }
+
+    #menuAccesibilidad button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 8px;
+        cursor: pointer;
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    #menuAccesibilidad button:hover {
+        background: #002d72; /* Azul Gruma al pasar el mouse */
+        color: white;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<button id="accessibilityBtn" title="Opciones de accesibilidad">
+    <i class="fas fa-universal-access"></i>
+</button>
+
+<div id="menuAccesibilidad">
+    <h5 style="text-align: center; margin-top: 0; color: #333;">Accesibilidad</h5>
+    <button onclick="aumentarTexto()">Aumentar texto</button>
+    <button onclick="disminuirTexto()">Disminuir texto</button>
+    <button onclick="modoOscuro()">Modo oscuro</button>
+    <button onclick="modoClaro()">Modo claro</button>
+    <button onclick="leerTexto()">Leer texto</button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const btn = document.getElementById("accessibilityBtn");
+    const menu = document.getElementById("menuAccesibilidad");
+
+    btn.onclick = (e) => {
+        e.stopPropagation(); 
+        menu.style.display = (menu.style.display === "none" || menu.style.display === "") ? "block" : "none";
+    };
+
+    
+    document.addEventListener("click", function(event) {
+        if (!menu.contains(event.target) && event.target !== btn) {
+            menu.style.display = "none";
+        }
+    });
+
+    window.aumentarTexto = function() {
+        document.body.style.fontSize = "1.2rem";
+    }
+
+    window.disminuirTexto = function() {
+        document.body.style.fontSize = "0.9rem";
+    }
+
+    window.modoOscuro = function() {
+        document.body.style.background = "#1a1a1a";
+        document.body.style.color = "white";
+    }
+
+    window.modoClaro = function() {
+        document.body.style.background = "white";
+        document.body.style.color = "black";
+    }
+
+    window.leerTexto = function() {
+        let texto = document.body.innerText;
+        let speech = new SpeechSynthesisUtterance(texto);
+        speech.lang = "es-ES";
+        window.speechSynthesis.speak(speech);
+    }
+});
+</script>
 
 
 </body>
