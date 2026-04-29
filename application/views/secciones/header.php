@@ -5,7 +5,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/estilos.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/css/menúlateral.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/header.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/menu-lateral.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/marcas.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/historia.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/filosofia.css'); ?>">
@@ -83,9 +84,17 @@
 
 <li><a href="<?= base_url('paginas/sustentabilidad') ?>">Sustentabilidad</a></li>
 
-<li><a href="<?= base_url('paginas/prensa') ?>">Sala de Prensa</a></li>
+<li class="<?= ($this->uri->segment(1) == 'prensa') ? 'activo' : '' ?>">
+    <a href="<?= base_url('prensa') ?>">Sala de Prensa</a>
+</li>
 
+<li><a href="<?= base_url('prensa') ?>">Sala de Prensa</a></li>
 <li><a href="<?= base_url('paginas/contacto') ?>">Contacto</a></li>
+
+<li><a href="<?= base_url('login') ?>">Sala de Prensa</a></li>
+<li><a href="<?= base_url('paginas/inicio sesion') ?>">inicio sesion</a></li>
+
+
 
 </ul>
 

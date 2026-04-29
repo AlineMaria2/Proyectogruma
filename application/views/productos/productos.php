@@ -41,3 +41,4 @@ Ver más
 </div>
 
 <?php } ?>
+</section>

@@ -13,32 +13,29 @@
 
 /* RESET */
 
-body{
-  margin:0;
+/* RESET CORRECTO */
+body {
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  overflow-x:hidden;
-  margin-top: 80px;
-  padding-top: 80px; /* ajusta a la altura real del navbar */
+  padding-top: 85px; /* Deja espacio para el navbar fijo */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* NAVBAR */
-
-.navbar{
-  background:var(--verde);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:15px 40px;
-
-  .navbar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
-} 
-
+/* NAVBAR CORRECTA */
+.navbar {
+  background: var(--verde);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
   box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
 }
 
 /* LOGO */
