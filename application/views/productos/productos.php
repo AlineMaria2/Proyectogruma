@@ -59,9 +59,6 @@
     cursor: pointer;
     font-size: 14px;
 }
-.buscador-productos button:hover {
-    background: #e6bc00;
-}
 </style>
 
 <section class="productos">
@@ -71,53 +68,27 @@
     <p>Explora nuestros productos por marca</p>
 </div>
 
-<!-- BUSCADOR CON AUTOCOMPLETADO -->
-<div class="buscador-productos">
+<div class="buscador-productos" style="position: sticky; top: 85px; z-index: 999; background: transparent; padding: 10px 0;">
     <form action="<?= base_url('productos/buscar') ?>" method="GET" autocomplete="off">
         <input type="text" name="query" id="buscador-input" placeholder="Buscar producto...">
         <button type="submit">Buscar</button>
     </form>
-    <ul id="sugerencias" style="
-        position:absolute;
-        top:100%;
-        left:50%;
-        transform:translateX(-50%);
-        width:100%;
-        max-width:500px;
-        background:white;
-        border-radius:15px;
-        box-shadow:0 8px 20px rgba(0,0,0,0.15);
-        list-style:none;
-        margin:5px 0 0;
-        padding:0;
-        z-index:999;
-        display:none;
-    "></ul>
+    <ul id="sugerencias" style="position:absolute;top:100%;left:50%;transform:translateX(-50%);width:100%;max-width:500px;background:white;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.15);list-style:none;margin:5px 0 0;padding:0;z-index:999;display:none;"></ul>
 </div>
 
 <?php foreach($marcas as $m){ ?>
-
 <div class="marca-productos">
-
     <h3 class="marca-titulo"><?= $m->nombre ?></h3>
-
     <div class="productos-container">
-
     <?php foreach($m->productos as $p){ ?>
-
         <div class="producto-card">
-
             <img src="<?= base_url('assets/img/productos/'.$p->id_imagen) ?>">
-
             <h4><?= $p->nombre ?></h4>
-
             <p class="precio">$<?= $p->precio ?></p>
-
             <a href="javascript:void(0)" class="btn-producto" 
-   onclick="verDetalle(<?= $p->id ?>, '<?= addslashes($p->nombre) ?>', '<?= $p->precio ?>', '<?= addslashes($p->descripcion) ?>', '<?= $p->id_imagen ?>')">
-    Ver más
-</a>
-
+               onclick="verDetalle(<?= $p->id ?>, '<?= addslashes($p->nombre) ?>', '<?= $p->precio ?>', '<?= addslashes($p->descripcion) ?>', '<?= $p->id_imagen ?>')">
+                Ver más
+            </a>
             <div class="agregar-carrito">
                 <select class="select-cantidad">
                     <option value="1">Cantidad: 1</option>
@@ -127,34 +98,54 @@
                     <option value="5">Cantidad: 5</option>
                 </select>
                 <button class="btn-carrito" 
-                    onclick="agregarAlCarrito(<?= $p->id ?>, <?= $p->precio ?>, '<?= $p->nombre ?>', this)">
+                    data-id="<?= $p->id ?>"
+                    data-precio="<?= $p->precio ?>"
+                    data-nombre="<?= addslashes($p->nombre) ?>"
+                    data-imagen="<?= $p->id_imagen ?>"
+                    onclick="agregarAlCarrito(this)">
                     Agregar al carrito
                 </button>
             </div>
-
         </div>
-
     <?php } ?>
-
     </div>
-
 </div>
-
 <?php } ?>
 
 <script>
-function agregarAlCarrito(id, precio, nombre, btn) {
+function agregarAlCarrito(btn) {
+    const id      = btn.dataset.id;
+    const precio  = btn.dataset.precio;
+    const nombre  = btn.dataset.nombre;
+    const imagen  = btn.dataset.imagen;
     const cantidad = btn.closest('.producto-card').querySelector('select').value;
-    alert('✅ ' + nombre + ' x' + cantidad + ' agregado al carrito');
+
+    fetch('<?= base_url("productos/agregar_carrito") ?>', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: `id=${id}&nombre=${encodeURIComponent(nombre)}&precio=${precio}&cantidad=${cantidad}&imagen=${encodeURIComponent(imagen)}`
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.ok) {
+            btn.textContent = '✅ Agregado';
+            btn.style.background = '#007A3D';
+            btn.style.color = 'white';
+            setTimeout(() => {
+                btn.textContent = 'Agregar al carrito';
+                btn.style.background = '#FFD100';
+                btn.style.color = '#007A3D';
+            }, 2000);
+        }
+    });
 }
 
 const input = document.getElementById('buscador-input');
-const lista = document.getElementById('sugerencias');
+const lista  = document.getElementById('sugerencias');
 
 input.addEventListener('input', function() {
     const q = this.value.trim();
     if (q.length < 2) { lista.style.display = 'none'; return; }
-
     fetch('<?= base_url('productos/autocomplete') ?>?q=' + encodeURIComponent(q))
         .then(r => r.json())
         .then(data => {
@@ -181,35 +172,14 @@ document.addEventListener('click', function(e) {
     if (!e.target.closest('.buscador-productos')) lista.style.display = 'none';
 });
 </script>
-<!-- PANEL LATERAL -->
-<div id="panel-detalle" style="
-    position:fixed;
-    top:0; right:-420px;
-    width:400px;
-    height:100%;
-    background:white;
-    box-shadow:-5px 0 30px rgba(0,0,0,0.15);
-    z-index:9999;
-    transition:right 0.3s ease;
-    overflow-y:auto;
-    padding:30px;
-    box-sizing:border-box;
-">
-    <button onclick="cerrarPanel()" style="
-        position:absolute;
-        top:15px; right:15px;
-        background:none;
-        border:none;
-        font-size:24px;
-        cursor:pointer;
-        color:#007A3D;
-    ">✕</button>
 
+<!-- PANEL LATERAL -->
+<div id="panel-detalle" style="position:fixed;top:0;right:-420px;width:400px;height:100%;background:white;box-shadow:-5px 0 30px rgba(0,0,0,0.15);z-index:9999;transition:right 0.3s ease;overflow-y:auto;padding:30px;box-sizing:border-box;">
+    <button onclick="cerrarPanel()" style="position:absolute;top:15px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:#007A3D;">✕</button>
     <img id="panel-img" src="" style="width:100%;max-height:250px;object-fit:contain;margin-bottom:20px;">
     <h3 id="panel-nombre" style="color:#007A3D;margin-bottom:10px;"></h3>
     <p id="panel-precio" style="font-size:22px;font-weight:bold;color:#007A3D;margin-bottom:15px;"></p>
     <p id="panel-desc" style="color:#555;line-height:1.7;margin-bottom:25px;"></p>
-
     <div class="agregar-carrito">
         <select class="select-cantidad" id="panel-cantidad">
             <option value="1">Cantidad: 1</option>
@@ -218,33 +188,38 @@ document.addEventListener('click', function(e) {
             <option value="4">Cantidad: 4</option>
             <option value="5">Cantidad: 5</option>
         </select>
-        <button class="btn-carrito" id="panel-btn-carrito">
-            Agregar al carrito
-        </button>
+        <button class="btn-carrito" id="panel-btn-carrito">Agregar al carrito</button>
     </div>
 </div>
 
-<div id="overlay-panel" onclick="cerrarPanel()" style="
-    position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
-    background:rgba(0,0,0,0.3);
-    z-index:9998;
-    display:none;
-"></div>
+<div id="overlay-panel" onclick="cerrarPanel()" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:9998;display:none;"></div>
 
 <script>
+var panelProductoActual = {};
+
 function verDetalle(id, nombre, precio, descripcion, imagen) {
+    panelProductoActual = {id, nombre, precio, imagen};
     document.getElementById('panel-img').src = '<?= base_url('assets/img/productos/') ?>' + imagen;
     document.getElementById('panel-nombre').textContent = nombre;
     document.getElementById('panel-precio').textContent = '$' + precio;
     document.getElementById('panel-desc').textContent = descripcion;
-
     document.getElementById('panel-btn-carrito').onclick = function() {
         const cantidad = document.getElementById('panel-cantidad').value;
-        alert('✅ ' + nombre + ' x' + cantidad + ' agregado al carrito');
+        fetch('<?= base_url("productos/agregar_carrito") ?>', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: `id=${id}&nombre=${encodeURIComponent(nombre)}&precio=${precio}&cantidad=${cantidad}&imagen=${encodeURIComponent(imagen)}`
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.ok) {
+                document.getElementById('panel-btn-carrito').textContent = '✅ Agregado';
+                setTimeout(() => {
+                    document.getElementById('panel-btn-carrito').textContent = 'Agregar al carrito';
+                }, 2000);
+            }
+        });
     };
-
     document.getElementById('panel-detalle').style.right = '0';
     document.getElementById('overlay-panel').style.display = 'block';
 }
@@ -254,4 +229,5 @@ function cerrarPanel() {
     document.getElementById('overlay-panel').style.display = 'none';
 }
 </script>
+
 </section>

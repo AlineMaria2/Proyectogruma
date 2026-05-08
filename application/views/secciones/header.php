@@ -61,17 +61,17 @@
 <a href="<?= base_url('productos/contacto') ?>">Contáctanos</a>
 </li>
 
-<!-- BOTON CARRITO -->
-<li class="<?= ($this->uri->segment(2) == 'alta_pedidos') ? 'activo' : '' ?>">
-    <a href="<?= base_url('productos/alta_pedidos') ?>" style="color: #FFD100; font-weight: bold;">
-        <i class="fa-solid fa-cart-shopping"></i> Carrito
-    </a>
-</li>
-
 <!-- LOGIN -->
 <li>
     <a href="<?= base_url('login') ?>" style="color: white;">
         <i class="fa-solid fa-user"></i> Iniciar Sesión
+    </a>
+</li>
+
+<!-- BOTON CARRITO -->
+<li class="<?= ($this->uri->segment(2) == 'alta_pedidos') ? 'activo' : '' ?>">
+    <a href="<?= base_url('productos/alta_pedidos') ?>" style="color: #FFD100; font-weight: bold;">
+        <i class="fa-solid fa-cart-shopping"></i> Carrito
     </a>
 </li>
 
@@ -106,17 +106,17 @@
 
 <li><a href="<?= base_url('productos/contacto') ?>">Contacto</a></li>
 
-<!-- CARRITO MENU LATERAL -->
-<li>
-    <a href="<?= base_url('productos/alta_pedidos') ?>">
-        <i class="fa-solid fa-cart-shopping"></i> Carrito
-    </a>
-</li>
-
 <!-- LOGIN MENU LATERAL -->
 <li>
     <a href="<?= base_url('login') ?>">
         <i class="fa-solid fa-user"></i> Iniciar Sesión
+    </a>
+</li>
+
+<!-- CARRITO MENU LATERAL -->
+<li>
+    <a href="<?= base_url('productos/alta_pedidos') ?>">
+        <i class="fa-solid fa-cart-shopping"></i> Carrito
     </a>
 </li>
 

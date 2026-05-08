@@ -1,57 +1,103 @@
-<div class="container" style="margin-top: 150px; margin-bottom: 100px; display: flex; justify-content: center;">
-    
-    <div style="width: 100%; max-width: 450px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        
-        <div style="display: flex; align-items: center; margin-bottom: 30px;">
-            <i class="fa-solid fa-user" style="font-size: 35px; margin-right: 15px;"></i>
-            <h1 style="font-size: 32px; margin: 0; color: #333; font-weight: 500;">Inicio de Sesion</h1>
-        </div>
+<?php $carrito = $this->session->userdata('carrito'); if (!$carrito) $carrito = []; $total_general = 0; ?>
 
-        <form action="#" method="POST" style="padding-left: 20px;">
-            
-            <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                <label style="width: 120px; font-weight: bold; color: #333;">Usuario</label>
-                <input type="text" name="usuario" placeholder="Usuario" style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; outline: none;">
-            </div>
+<div class="container" style="margin-top: 150px; margin-bottom: 80px; padding: 0 40px;">
 
-            <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                <label style="width: 120px; font-weight: bold; color: #333;">Contraseña</label>
-                <input type="password" name="password" placeholder="Contraseña" style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; outline: none;">
-            </div>
+    <h2 style="color: #007A3D; margin-bottom: 30px; font-size: 26px;">
+        <i class="fa-solid fa-cart-shopping"></i> Mi Carrito
+    </h2>
 
-            <div style="display: flex; align-items: center; margin-bottom: 25px;">
-                <div style="width: 120px;"></div> <div id="captcha-container" onclick="activarCaptcha()" style="background: #f9f9f9; border: 1px solid #d3d3d3; border-radius: 3px; padding: 10px; display: flex; align-items: center; width: 100%; cursor: pointer; user-select: none;">
-                    <div id="captcha-box" style="width: 20px; height: 20px; border: 2px solid #c1c1c1; background: #fff; border-radius: 2px; display: flex; align-items: center; justify-content: center;">
-                        <i id="captcha-check" class="fa-solid fa-check" style="color: #00a651; display: none; font-size: 14px;"></i>
+    <?php if (!empty($carrito)): ?>
+
+    <div style="display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap;">
+
+        <!-- PRODUCTOS -->
+        <div style="flex: 1; min-width: 300px;">
+
+            <div style="background: white; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.08); padding: 25px;">
+                <h3 style="color: #007A3D; margin-bottom: 20px; font-size: 16px;">Productos</h3>
+
+                <?php foreach ($carrito as $item): 
+                    $subtotal = $item['precio'] * $item['cantidad'];
+                    $total_general += $subtotal;
+                ?>
+                <div style="display: flex; align-items: center; gap: 15px; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+
+                    <input type="checkbox" checked style="width: 18px; height: 18px; accent-color: #007A3D;">
+
+                    <img src="<?= base_url('assets/img/productos/'.$item['imagen']) ?>" 
+                         style="width: 80px; height: 80px; object-fit: contain; border-radius: 8px; background: #f9f9f9; padding: 5px;">
+
+                    <div style="flex: 1;">
+                        <p style="font-weight: 600; color: #1a1a1a; margin: 0 0 5px;"><?= $item['nombre'] ?></p>
+                        <p style="color: #007A3D; font-size: 20px; font-weight: bold; margin: 0;">
+                            $<?= number_format($item['precio'], 2) ?>
+                        </p>
+                        <p style="color: #888; font-size: 13px; margin: 4px 0 0;">
+                            Cantidad: <?= $item['cantidad'] ?>
+                        </p>
                     </div>
-                    <span style="margin-left: 10px; font-size: 13px; color: #555;">No soy un robot</span>
-                    <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" style="margin-left: auto; width: 25px;">
+
+                    <form method="POST" action="<?= base_url('productos/eliminar_carrito') ?>">
+                        <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                        <button type="submit" style="background: none; border: none; cursor: pointer; color: #aaa; font-size: 18px;">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+
+                </div>
+                <?php endforeach; ?>
+
+            </div>
+
+            <div style="background: white; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.08); padding: 20px; margin-top: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 600; color: #333;">Envío</span>
+                    <span style="color: #007A3D; font-weight: bold;">Gratis</span>
                 </div>
             </div>
 
-            <div style="display: flex; justify-content: center; margin-bottom: 40px;">
-                <button type="submit" style="background: #fff; border: 1px solid #999; padding: 8px 30px; border-radius: 4px; cursor: pointer; color: #333; font-size: 14px;">
-                    Ingresar
-                </button>
-            </div>
-        </form>
+        </div>
 
-        <div style="text-align: center; font-size: 14px; line-height: 2.5;">
-            <p style="margin: 0;">¿No tienes cuenta? <a href="#" style="color: #055212; text-decoration: none;">Solicitala aqui <i class="fa-solid fa-hand-point-left"></i></a></p>
-            <p style="margin: 0;">¿Ya eres cliente Minsa? <a href="#" style="color: #055212; text-decoration: none;">Solicita tu acceso aqui <i class="fa-solid fa-pen-to-square"></i></a></p>
-            
-            <div style="margin-top: 40px;">
-                <a href="#" style="color: #055212; text-decoration: none; display: block;">Terminos y condiciones <i class="fa-solid fa-book"></i></a>
-                <a href="#" style="color: #055212; text-decoration: none; display: block;">Aviso de privacidad <i class="fa-solid fa-file-lines"></i></a>
+        <!-- RESUMEN -->
+        <div style="width: 280px;">
+            <div style="background: white; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.08); padding: 25px; position: sticky; top: 120px;">
+
+                <h3 style="color: #333; margin-bottom: 20px; font-size: 16px;">Resumen de compra</h3>
+
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; color: #555;">
+                    <span>Productos (<?= count($carrito) ?>)</span>
+                    <span>$<?= number_format($total_general, 2) ?></span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 14px; color: #555;">
+                    <span>Envío</span>
+                    <span style="color: #007A3D; font-weight: bold;">Gratis</span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; font-size: 17px; font-weight: bold; color: #1a1a1a; border-top: 1px solid #f0f0f0; padding-top: 15px; margin-bottom: 20px;">
+                    <span>Total</span>
+                    <span>$<?= number_format($total_general, 2) ?></span>
+                </div>
+
+                <button style="width: 100%; padding: 13px; background: #007A3D; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer;">
+                    Continuar (<?= count($carrito) ?>)
+                </button>
+
             </div>
         </div>
 
     </div>
-</div>
 
-<script>
-function activarCaptcha() {
-    document.getElementById('captcha-box').style.borderColor = "#00a651";
-    document.getElementById('captcha-check').style.display = "block";
-}
-</script>
+    <?php else: ?>
+
+    <div style="text-align: center; padding: 80px 20px; background: white; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.08);">
+        <i class="fa-solid fa-cart-shopping" style="font-size: 60px; color: #ddd; margin-bottom: 20px;"></i>
+        <h3 style="color: #aaa; margin-bottom: 10px;">Tu carrito está vacío</h3>
+        <a href="<?= base_url('productos') ?>" style="display: inline-block; margin-top: 15px; padding: 12px 30px; background: #007A3D; color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">
+            Ver Productos
+        </a>
+    </div>
+
+    <?php endif; ?>
+
+</div>

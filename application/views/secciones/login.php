@@ -1,134 +1,166 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Inicio de Sesión</title>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión - Gruma</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f2f2f2;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-    /* Barra superior */
-    .header {
-        background-color: #0a7a33;
-        color: white;
-        padding: 15px 30px;
-        font-size: 20px;
-        font-weight: bold;
-    }
+        .login-card {
+            background: white;
+            padding: 40px 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
 
-    /* Fondo tipo banner */
-    .banner {
-        background: linear-gradient(rgba(10,122,51,0.9), rgba(10,122,51,0.9)),
-                    url('https://images.unsplash.com/photo-1500382017468-9049fed747ef');
-        background-size: cover;
-        background-position: center;
-        height: 180px;
-        display: flex;
-        align-items: center;
-        padding-left: 40px;
-        color: white;
-        font-size: 28px;
-        font-weight: bold;
-    }
+        .login-card img.logo {
+            width: 90px;
+            margin-bottom: 20px;
+        }
 
-    /* Contenedor */
-    .container {
-        display: flex;
-        justify-content: center;
-        margin-top: -60px;
-    }
+        .login-card h2 {
+            color: #1a1a2e;
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
 
-    /* Caja login */
-    .login-box {
-        background: white;
-        padding: 30px;
-        width: 350px;
-        border-radius: 10px;
-        box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
-    }
+        .form-group {
+            text-align: left;
+            margin-bottom: 16px;
+        }
 
-    .login-box h2 {
-        text-align: center;
-        color: #0a7a33;
-    }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
 
-    .input-group {
-        margin: 15px 0;
-    }
+        .form-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
 
-    .input-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 14px;
-    }
+        .form-group input:focus {
+            border-color: #1a6b3c;
+        }
 
-    .input-group input {
-        width: 100%;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 16px;
+        }
 
-    .btn {
-        width: 100%;
-        padding: 10px;
-        background-color: #0a7a33;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-    }
+        .recaptcha-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
 
-    .btn:hover {
-        background-color: #066128;
-    }
+        .btn-login {
+            width: 100%;
+            padding: 11px;
+            background-color: #1a6b3c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-    .footer {
-        margin-top: 40px;
-        text-align: center;
-        color: #666;
-        font-size: 14px;
-    }
-</style>
+        .btn-login:hover { background-color: #145c32; }
+
+        .links {
+            margin-top: 16px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .links a {
+            color: #1a6b3c;
+            text-decoration: none;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .links a:hover { text-decoration: underline; }
+
+        .error-msg {
+            background: #ffe0e0;
+            color: #c00;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="header">
-    Empresa - Inversionistas
-</div>
+<div class="login-card">
 
-<div class="banner">
-    INICIO DE SESIÓN
-</div>
+    <img src="../../../assets/img/logo.png" alt="Gruma" class="logo">
 
-<div class="container">
-    <div class="login-box">
-        <h2>Acceder</h2>
+    <h2>Bienvenido a Gruma</h2>
 
-        <form>
-            <div class="input-group">
-                <label>Usuario</label>
-                <input type="text" placeholder="Ingresa tu usuario">
-            </div>
+    <?php if (isset($_SESSION['login_error'])): ?>
+        <div class="error-msg">
+            <?= $_SESSION['login_error']; unset($_SESSION['login_error']); ?>
+        </div>
+    <?php endif; ?>
 
-            <div class="input-group">
-                <label>Contraseña</label>
-                <input type="password" placeholder="Ingresa tu contraseña">
-            </div>
+    <form method="POST" action="../../../controllers/AuthController.php">
 
-            <button class="btn">Iniciar sesión</button>
-        </form>
+        <div class="form-group">
+            <label>Username *</label>
+            <input type="text" name="username" placeholder="Enter your Username" required>
+        </div>
+
+        <div class="form-group">
+            <label>Password *</label>
+            <input type="password" name="password" placeholder="Enter your Password" required>
+        </div>
+
+        <div class="remember">
+            <input type="checkbox" name="remember" id="remember">
+            <label for="remember">Remember me</label>
+        </div>
+
+        <div class="recaptcha-wrapper">
+            <div class="g-recaptcha" data-sitekey="TU_SITE_KEY_AQUI"></div>
+        </div>
+
+        <button type="submit" name="submit" class="btn-login">Acceso</button>
+    </form>
+
+    <div class="links">
+        <a href="#">¿Se te olvidó tu contraseña?</a>
+        <a href="#">¿No tienes una cuenta?</a>
     </div>
-</div>
 
-<div class="footer">
-    © 2026 Empresa | Todos los derechos reservados
 </div>
 
 </body>

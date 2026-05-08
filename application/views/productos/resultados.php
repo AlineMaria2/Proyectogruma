@@ -26,9 +26,7 @@
     font-size: 13px;
     cursor: pointer;
 }
-.btn-carrito:hover {
-    background: #e6bc00;
-}
+.btn-carrito:hover { background: #e6bc00; }
 </style>
 
 <div class="container" style="margin-top: 150px; padding: 0 60px 60px;">
@@ -38,21 +36,13 @@
     </h2>
 
     <?php if (!empty($resultados_productos)): ?>
-
         <div class="productos-container">
             <?php foreach ($resultados_productos as $p): ?>
                 <div class="producto-card">
-
                     <img src="<?= base_url('assets/img/productos/'.$p->id_imagen) ?>">
-
                     <h4><?= $p->nombre ?></h4>
-
                     <p class="precio">$<?= $p->precio ?></p>
-
-                    <a href="<?= base_url('productos/detalle/'.$p->id) ?>" class="btn-producto">
-                        Ver más
-                    </a>
-
+                    <a href="<?= base_url('productos/detalle/'.$p->id) ?>" class="btn-producto">Ver más</a>
                     <div class="agregar-carrito">
                         <select class="select-cantidad">
                             <option value="1">Cantidad: 1</option>
@@ -62,27 +52,49 @@
                             <option value="5">Cantidad: 5</option>
                         </select>
                         <button class="btn-carrito"
-                            onclick="agregarAlCarrito(<?= $p->id ?>, <?= $p->precio ?>, '<?= $p->nombre ?>', this)">
+                            data-id="<?= $p->id ?>"
+                            data-precio="<?= $p->precio ?>"
+                            data-nombre="<?= addslashes($p->nombre) ?>"
+                            data-imagen="<?= $p->id_imagen ?>"
+                            onclick="agregarAlCarrito(this)">
                             Agregar al carrito
                         </button>
                     </div>
-
                 </div>
             <?php endforeach; ?>
         </div>
-
     <?php else: ?>
-        <p style="color:#555; font-size:16px;">
-            No se encontraron productos para "<?= htmlspecialchars($busqueda) ?>". Intenta con otra palabra.
-        </p>
+        <p style="color:#555; font-size:16px;">No se encontraron productos para "<?= htmlspecialchars($busqueda) ?>".</p>
         <a href="<?= base_url('productos') ?>" class="btn-volver">← Volver a productos</a>
     <?php endif; ?>
 
 </div>
 
 <script>
-function agregarAlCarrito(id, precio, nombre, btn) {
+function agregarAlCarrito(btn) {
+    const id       = btn.dataset.id;
+    const precio   = btn.dataset.precio;
+    const nombre   = btn.dataset.nombre;
+    const imagen   = btn.dataset.imagen;
     const cantidad = btn.closest('.producto-card').querySelector('select').value;
-    alert('✅ ' + nombre + ' x' + cantidad + ' agregado al carrito');
+
+    fetch('<?= base_url("productos/agregar_carrito") ?>', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: `id=${id}&nombre=${encodeURIComponent(nombre)}&precio=${precio}&cantidad=${cantidad}&imagen=${encodeURIComponent(imagen)}`
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.ok) {
+            btn.textContent = '✅ Agregado';
+            btn.style.background = '#007A3D';
+            btn.style.color = 'white';
+            setTimeout(() => {
+                btn.textContent = 'Agregar al carrito';
+                btn.style.background = '#FFD100';
+                btn.style.color = '#007A3D';
+            }, 2000);
+        }
+    });
 }
 </script>
