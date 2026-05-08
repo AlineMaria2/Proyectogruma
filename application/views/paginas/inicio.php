@@ -2,3 +2,4 @@
     <h1>Bienvenido al sistema GRUMA</h1>
     <p>Este es el panel principal del sistema.</p>
 </div>
+

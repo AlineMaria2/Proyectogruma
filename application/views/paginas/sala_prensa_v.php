@@ -23,23 +23,41 @@
         </p>
 
         <div style="margin-top: 10px;">
-            <?php foreach($noticias as $n): ?>
-                <div style="background: white; padding: 25px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 6px solid #00833e; transition: transform 0.2s;">
-                    <small style="color: #888; font-weight: bold; text-transform: uppercase; font-size: 0.75rem;">
-                        📅 <?= $n['fecha'] ?>
-                    </small>
-                    <h3 style="color: #002d72; margin: 10px 0; font-size: 1.5rem;">
-                        <?= $n['titulo'] ?>
-                    </h3>
-                    <p style="line-height: 1.6; color: #444;">
-                        <?= $n['extracto'] ?>
-                    </p>
-                    <a href="#" style="color: #00833e; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px;">
-                        Leer más →
-                    </a>
-                </div>
-            <?php endforeach; ?>
+            
+            <div style="background: white; padding: 25px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 6px solid #00833e;">
+                <small style="color: #888; font-weight: bold; text-transform: uppercase; font-size: 0.75rem;">
+                    📅 17 / ABR. / 2024
+                </small>
+                <h3 style="color: #002d72; margin: 10px 0; font-size: 1.5rem;">
+                    EBITDA de Gruma crece 26% en el 1T24
+                </h3>
+                <p style="line-height: 1.6; color: #444;">
+                    Las operaciones fuera de México impulsaron el crecimiento.
+                </p>
+                <a href="https://www.elfinanciero.com.mx/monterrey/2024/04/17/reporta-gruma-alza-de-26-en-ebitda-del-i-2024/" 
+                   target="_blank" 
+                   style="color: #00833e; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px;">
+                    Leer más →
+                </a>
+            </div>
+
+            <div style="background: white; padding: 25px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 6px solid #00833e;">
+                <small style="color: #888; font-weight: bold; text-transform: uppercase; font-size: 0.75rem;">
+                    📅 27 / FEB. / 2024
+                </small>
+                <h3 style="color: #002d72; margin: 10px 0; font-size: 1.5rem;">
+                    Inversión de 792 MDP en Puebla
+                </h3>
+                <p style="line-height: 1.6; color: #444;">
+                    Ampliación de planta Mission y nuevo centro de botanas.
+                </p>
+                <a href="https://www.elfinanciero.com.mx/empresas/2024/02/27/no-solo-le-entra-a-las-tortillas-gruma-invertira-792-mdp-para-producir-botanas-mission/" 
+                   target="_blank" 
+                   style="color: #00833e; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px;">
+                    Leer más →
+                </a>
+            </div>
+
         </div>
     </div>
-
 </div>
