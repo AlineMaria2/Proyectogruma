@@ -1,4 +1,4 @@
--- --------------------------------------------------------
+----------------------------------------------------
 -- Host:                         127.0.0.1
 -- Versión del servidor:         8.0.30 - MySQL Community Server - GPL
 -- SO del servidor:              Win64
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `banner` (
 
 -- Volcando datos para la tabla proyectogruma.banner: ~4 rows (aproximadamente)
 INSERT INTO `banner` (`id`, `titulo`, `descripcion`, `imagen`, `activo`, `fecha_registro`) VALUES
-	(1, 'Calidad Gruma', 'Líder mundial en harina de maíz', 'banner1.jpg', 1, '2026-04-15 12:37:52'),
+	(1proyectogrumaproyectogruma, 'Calidad Gruma', 'Líder mundial en harina de maíz', 'banner1.jpg', 1, '2026-04-15 12:37:52'),
 	(2, 'Innovación', 'Productos de alta calidad', 'banner2.jpg', 1, '2026-04-15 12:37:52'),
 	(3, 'Sustentabilidad', 'Compromiso con el medio ambiente', 'banner3.jpg', 1, '2026-04-15 12:37:52'),
 	(4, 'Maseca', 'Imagen de Maseca', 'banner4.png', 1, '2026-04-15 13:41:35');
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `cat_productos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla proyectogruma.cat_productos: ~35 rows (aproximadamente)
+-- Volcando datos paraproyectogruma`format_bytes` la tabla proyectogruma.cat_productos: ~35 rows (aproximadamente)
 INSERT INTO `cat_productos` (`id`, `nombre`, `descripcion`, `id_imagen`, `precio`, `activo`, `registro`, `id_marca`) VALUES
 	(1, 'TORTILLAS DE MAÍZ BLANCO', 'Guerrero Tortillas de Maíz Blanco más suaves que nunca, elaboradas con maíz blanco para brindar calidad y frescura en cada bocado, ideales para preparar tus platillos mexicanos favoritos o disfrutarlas como base de antojitos tradicionales, certificadas como libres de gluten y fuente de fibra, están elaboradas con todos los ingredientes necesarios para obtener un producto nutritivo y delicioso, con un rico sabor 100% mexicano y se presentan en empaque de 710 g con 30 tortillas prácticas y listas para servir.', 'tortilla.png', 35.00, 1, '2026-04-16', 3),
 	(2, 'TORTILLAS DE TRIGO', 'Mission Tortillas de Trigo elaboradas con harina de trigo, suaves y prácticas para preparar tacos, burritos o tus platillos favoritos, no contienen conservadores, colorantes o saborizantes artificiales, están elaboradas con todos los ingredientes necesarios para obtener un producto nutritivo y delicioso, con un rico sabor 100% mexicano y se presentan en empaque de 276 g con 6 tortillas prácticas y listas para servir.', 'tortillas_de_trigo.png', 40.00, 1, '2026-04-16', 2),
@@ -220,3 +220,4 @@ DELIMITER ;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+proyectogrumaproyectogrumaproyectogrumaproyectogrumahola

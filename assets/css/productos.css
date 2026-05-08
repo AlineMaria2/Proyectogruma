@@ -213,3 +213,44 @@ text-decoration:none;
 font-weight:600;
 
 }
+
+/* =========================
+   AGREGAR AL CARRITO
+   ========================= */
+
+.agregar-carrito {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.select-cantidad {
+    padding: 8px 10px;
+    border-radius: 25px;
+    border: 2px solid #FFD100;
+    background-color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #007A3D;
+
+}
+
+.btn-carrito {
+
+    flex: 1;
+    padding: 10px 16px;
+    background: #FFD100;
+    color: #007A3D;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-carrito:hover {
+    background: #e6bc00;
+}

@@ -24,7 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/Proyectogruma/';
-
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -224,6 +223,7 @@ $config['allow_get_array'] = TRUE;
 |
 */
 $config['log_threshold'] = 0;
+error_reporting(0);
 
 /*
 |--------------------------------------------------------------------------
