@@ -1,83 +1,289 @@
-/* TIMELINE */
+/* SECCION ACERCA */
+
+.acerca{
+
 
 .timeline {
-    background: #ffffff; /* Cambiado de rosado a blanco */
+    
+    background: #ffffffc4 !important; /* Blanco total */
     padding: 100px 60px;
 }
-
-.timeline-header {
-    text-align: center;
-    margin-bottom: 60px;
 }
 
-.timeline-header h2 {
-    color: var(--verde);
-    letter-spacing: 4px;
+
+
+.acerca-container{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:60px;
+
+align-items:center;
+
 }
 
-.timeline-header p {
-    font-size: 36px;
-    font-weight: bold;
-    color: var(--azul);
+/* IMAGEN */
+
+.acerca-img{
+
+position:relative;
+
+}
+
+.acerca-img img{
+
+width:100%;
+
+border-radius:20px;
+
+}
+
+/* ANIO */
+
+.acerca-anio{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+text-align:center;
+
+color:white;
+
+font-size:70px;
+
+font-weight:bold;
+
+}
+
+.acerca-anio span{
+
+display:block;
+
+font-size:16px;
+
+letter-spacing:6px;
+
+margin-top:8px;
+
+color:var(--amarillo);
+
+}
+.acerca-img::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.35);
+
+border-radius:20px;
+
+
+
+}
+/* ESTADO INICIAL (OCULTO) */
+.animar-anio{
+opacity:0;
+transform:translate(-50%,-50%) scale(0.6);
+transition:all 1s ease;
+}
+
+
+/* CUANDO SE ACTIVA */
+.animar-anio.visible{
+opacity:1;
+transform:translate(-50%,-50%) scale(1);
+}
+
+/* TEXTO */
+
+.acerca-texto h5{
+
+letter-spacing:4px;
+
+color:var(--verde);
+
+margin-bottom:10px;
+
+}
+
+.acerca-texto h2{
+
+font-size:40px;
+
+color:var(--azul);
+
+margin-bottom:20px;
+
+}
+
+.acerca-frase{
+
+background:#f2f2f2;
+
+padding:15px 20px;
+
+border-left:5px solid var(--amarillo);
+
+margin-bottom:20px;
+
+font-style:italic;
+
+color:var(--azul);
+
+}
+
+
+/* TIMELINE */
+
+.timeline{
+
+background: #f6f6f6;
+
+padding:100px 60px;
+}
+
+.timeline-header{
+
+text-align:center;
+margin-bottom:60px;
+
+}
+
+.timeline-header h2{
+
+color:var(--verde);
+letter-spacing:4px;
+
+}
+
+.timeline-header p{
+
+font-size:36px;
+font-weight:bold;
+color:var(--azul);
+
 }
 
 /* LINEA CENTRAL */
 
-.timeline-line {
-    height: 4px;
-    background: var(--amarillo);
-    width: 100%;
-    margin-bottom: 60px;
+.timeline-line{
+
+height:4px;
+background:var(--amarillo);
+width:100%;
+margin-bottom:60px;
+
 }
 
 /* CONTENEDOR */
 
-.timeline-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    flex-wrap: wrap;
+.timeline-container{
+
+display:flex;
+justify-content:space-between;
+gap:30px;
+flex-wrap:wrap;
+
 }
 
 /* ITEM */
 
-.timeline-item {
-    position: relative;
-    width: 180px;
+.timeline-item{
+
+position:relative;
+width:180px;
+
 }
 
 /* PUNTO */
 
-.timeline-dot {
-    width: 18px;
-    height: 18px;
-    background: var(--amarillo);
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    box-shadow: 0 0 0 6px white;
+.timeline-dot{
+
+width:18px;
+height:18px;
+
+background:var(--amarillo);
+
+border-radius:50%;
+
+margin:0 auto 20px;
+
+box-shadow:0 0 0 6px white;
+
 }
 
 /* CONTENIDO */
 
-.timeline-content {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: 0.3s;
+.timeline-content{
+
+background:white;
+
+padding:20px;
+
+border-radius:15px;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+transition:0.3s;
+
 }
 
-.timeline-content:hover {
-    transform: translateY(-6px);
+.timeline-content:hover{
+
+transform:translateY(-6px);
+
 }
 
-.timeline-content h3 {
-    color: var(--verde);
-    font-size: 22px;
-    margin-bottom: 10px;
+.timeline-content h3{
+
+color:var(--verde);
+font-size:22px;
+margin-bottom:10px;
+
 }
 
-.timeline-content h4 {
-    color: var(--azul);
-    font-size: 16px;
+.timeline-content h4{
+
+color:var(--azul);
+font-size:16px;
+
+}
+@media(max-width:900px){
+
+.acerca-container{
+
+grid-template-columns:1fr;
+
+}
+
+@media(max-width:900px){
+
+.timeline-container{
+
+flex-direction:column;
+align-items:center;
+
+}
+
+.timeline-item{
+
+width:80%;
+
+}
+
+}
+
 }

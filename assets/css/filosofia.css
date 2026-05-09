@@ -2,355 +2,72 @@
    FILOSOFIA (MISION VISION OBJETIVO)
    ========================= */
 
-.filosofia{
-background:#f6f6f6;
-padding:90px 60px;
+.filosofia-card {
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    width: 320px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.35s;
+    position: relative;
+    /* Esto centra TODO lo que venga de la base de datos */
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.filosofia-header{
-text-align:center;
-margin-bottom:60px;
+.filosofia-card h4 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center; /* Asegura el centrado del título PHP */
 }
 
-.filosofia-header h2{
-color:var(--verde);
-letter-spacing:3px;
-margin-bottom:10px;
+.filosofia-card p {
+    line-height: 1.7;
+    color: #444;
+    width: 100%;
+    text-align: center; /* Asegura el centrado del texto largo PHP */
+    margin: 0 auto;
 }
-
-.filosofia-header h3{
-font-size:38px;
-color:var(--azul);
-margin-bottom:10px;
-}
-
-.filosofia-header p{
-color:#555;
-font-size:18px;
-}
-
-/* contenedor */
-
-.filosofia-container{
-display:flex;
-gap:35px;
-justify-content:center;
-flex-wrap:wrap;
-}
-
-/* tarjetas */
-
-.filosofia-card{
-
-background:white;
-padding:35px;
-
-border-radius:18px;
-
-width:320px;
-
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-
-transition:0.35s;
-
-position:relative;
-
-}
-
-/* linea superior */
-
-.filosofia-card::before{
-
-content:"";
-
-position:absolute;
-top:0;
-left:0;
-
-width:100%;
-height:6px;
-
-border-radius:18px 18px 0 0;
-
-}
-
-/* colores individuales */
-
-.filosofia-card:nth-child(1)::before{
-background:#0f3d91;
-}
-
-.filosofia-card:nth-child(2)::before{
-background:#0c7a3d;
-}
-
-.filosofia-card:nth-child(3)::before{
-background:#e2b400;
-}
-
-/* hover */
-
-.filosofia-card:hover{
-
-transform:translateY(-8px);
-
-box-shadow:0 18px 40px rgba(0,0,0,0.12);
-
-}
-
-/* titulo */
-
-.filosofia-card h4{
-
-font-size:22px;
-
-margin-bottom:15px;
-
-color:var(--azul);
-
-}
-
-/* texto */
-
-.filosofia-card p{
-
-line-height:1.7;
-
-color:#444;
-
-}
-
 
 /* =========================
    VALORES
    ========================= */
 
-.valores{
-
-background:#103a8b;
-
-padding:100px 60px;
-
-color:white;
-
+.valor-card {
+    background: rgba(255,255,255,0.06);
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: 0.3s;
+    /* Forzado de centrado para datos dinámicos */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.valores-header{
-
-max-width:900px;
-margin-bottom:60px;
-
+.valor-card h4 {
+    color: #FFD100;
+    font-size: 22px;
+    margin-bottom: 12px;
+    width: 100%;
+    text-align: center;
 }
 
-.valores-header h2{
-
-color:#FFD100;
-letter-spacing:4px;
-font-size:14px;
-margin-bottom:10px;
-
+.valor-card p {
+    color: #e6ecff;
+    line-height: 1.6;
+    width: 100%;
+    text-align: center;
 }
 
-.valores-header h3{
-
-font-size:40px;
-margin-bottom:10px;
-
-}
-
-.valores-header p{
-
-color:#d4dcff;
-font-size:18px;
-
-}
-
-/* contenedor */
-
-.valores-container{
-
-display:flex;
-gap:30px;
-
-flex-wrap:wrap;
-
-justify-content:center; /* centra las tarjetas */
-
-margin-top:40px;
-
-}
-
-/* tarjetas */
-
-.valor-card{
-
-background:rgba(255,255,255,0.06);
-
-padding:30px;
-
-border-radius:15px;
-
-width:300px;
-
-border:1px solid rgba(255,255,255,0.15);
-
-transition:0.3s;
-
-}
-
-/* hover */
-
-.valor-card:hover{
-
-transform:translateY(-6px);
-
-background:rgba(255,255,255,0.12);
-
-}
-
-/* titulo */
-
-.valor-card h4{
-
-color:#FFD100;
-
-font-size:22px;
-
-margin-bottom:12px;
-
-}
-
-/* texto */
-
-.valor-card p{
-
-color:#e6ecff;
-
-line-height:1.6;
-
-}
-
-/* COLORES TARJETAS FILOSOFIA */
-
-.filosofia-card:nth-child(1){
-
-background:#e8edf7;
-
-}
-
-.filosofia-card:nth-child(2){
-
-background:#e7f3ea;
-
-}
-
-.filosofia-card:nth-child(3){
-
-background:#f6f1df;
-
-}
-.filosofia-card:nth-child(1) h4{
-color:#0f3d91;
-}
-
-.filosofia-card:nth-child(2) h4{
-color:#0c7a3d;
-}
-
-.filosofia-card:nth-child(3) h4{
-color:#b38b00;
-}
-
-
-
-/* TAG PEQUEÑA */
-
-.valores-tag{
-
-color:#FFD100;
-
-font-size:13px;
-
-letter-spacing:4px;
-
-font-weight:700;
-
-display:inline-block;
-
-margin-bottom:10px;
-
-position:relative;
-
-}
-
-/* linea decorativa */
-
-.valores-tag::after{
-
-content:"";
-
-display:block;
-
-width:40px;
-
-height:3px;
-
-background:#FFD100;
-
-margin-top:6px;
-
-}
-
-/* FRASE PRINCIPAL */
-
-.valores-frase{
-
-font-size:22px;
-
-font-weight:600;
-
-color:white;
-
-margin-bottom:10px;
-
-}
-
-/* SUBTEXTO */
-
-.valores-sub{
-
-color:#d6e1ff;
-
-font-size:17px;
-
-max-width:650px;
-
-}
-
-/* LINEA DECORATIVA VALORES */
-
-.valores-linea{
-
-width:80px;
-height:4px;
-
-background:#FFD100;
-
-margin:30px auto 50px auto;
-
-border-radius:4px;
-
-}
-
-@media(max-width:900px){
-
-.filosofia-container{
-flex-direction:column;
-align-items:center;
-}
-
-.valores-container{
-flex-direction:column;
-}
-
+/* Ajuste para el header de valores si los textos vienen de BD */
+.valores-header {
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+    text-align: center;
 }

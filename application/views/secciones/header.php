@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/header.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/menu-lateral.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/marcas.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/css/historia.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/historia.css?v=1.1'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/filosofia.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/footer.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/productos.css'); ?>">
@@ -33,9 +33,6 @@
 <nav>
 <ul class="menu">
 
-<li class="<?= ($this->uri->segment(2) == 'conocenos') ? 'activo' : '' ?>">
-<a href="<?= base_url('productos/conocenos') ?>">Somos Gruma</a>
-</li>
 
 <li class="<?= ($this->uri->segment(2) == 'productos') ? 'activo' : '' ?>">
 <a href="<?= base_url('productos') ?>">Productos</a>
@@ -92,7 +89,6 @@
 
 <ul class="menu-links">
 
-<li><a href="<?= base_url('productos/conocenos') ?>">Somos Gruma</a></li>
 
 <li><a href="<?= base_url('productos') ?>">Productos</a></li>
 
