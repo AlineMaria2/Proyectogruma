@@ -39,7 +39,7 @@
         <div class="productos-container">
             <?php foreach ($resultados_productos as $p): ?>
                 <div class="producto-card">
-                    <img src="<?= base_url('assets/img/productos/'.$p->id_imagen) ?>">
+                    <img src="<?= base_url($p->imagen_completa) ?>" alt="<?= $p->nombre ?>">
                     <h4><?= $p->nombre ?></h4>
                     <p class="precio">$<?= $p->precio ?></p>
                     <a href="<?= base_url('productos/detalle/'.$p->id) ?>" class="btn-producto">Ver más</a>
@@ -55,7 +55,7 @@
                             data-id="<?= $p->id ?>"
                             data-precio="<?= $p->precio ?>"
                             data-nombre="<?= addslashes($p->nombre) ?>"
-                            data-imagen="<?= $p->id_imagen ?>"
+                            data-imagen="<?= $p->imagen_completa ?>"
                             onclick="agregarAlCarrito(this)">
                             Agregar al carrito
                         </button>
