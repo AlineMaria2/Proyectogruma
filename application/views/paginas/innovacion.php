@@ -20,7 +20,7 @@
         padding: 0 10%; 
         
         /* Imagen de fondo sin movimiento */
-        background-image: url('<?= base_url('assets/img/banner_gruma.jpg') ?>');
+        background-image: url('<?= base_url('assets/img/banner4.jpg') ?>');
         background-size: cover;
         background-position: center;
         background-attachment: scroll; /* Asegura que no se mueva */
@@ -89,69 +89,55 @@
         .seccion-bloque, .seccion-bloque:nth-child(even) { flex-direction: column; padding: 40px 5%; }
     }
 </style>
-
 <div class="innovacion-body">
-    <section class="hero-innovacion">
+
+    <!-- HERO / BANNER -->
+    <?php if(!empty($innovacion)): ?>
+
+    <section 
+        class="hero-innovacion"
+        style="background-image: url('<?= base_url($innovacion[0]->url . $innovacion[0]->nombre_archivo) ?>');"
+    >
         <div class="hero-content">
-            <h1>Innovación Gruma</h1>
-            <p>Liderazgo global a través de la tecnología y el entendimiento del consumidor.</p>
-        </div>
-    </section>
+            <h1><?= $innovacion[0]->titulo ?></h1>
 
-    <section class="seccion-bloque">
-        <div class="bloque-img">
-            <img src="<?= base_url('assets/img/innovacion/vision.jpg') ?>" alt="Visión Gruma">
-        </div>
-        <div class="bloque-txt">
-            <h2>Visión de Innovación</h2>
-            <p><strong>Innovación, un compromiso vigente.</strong> Vemos la innovación como la única forma de mantenerse competitivo. Durante más de 65 años hemos demostrado nuestro compromiso con la búsqueda constante de soluciones únicas.</p>
-            <p>Este enfoque nos ha permitido ganar la confianza permanente de nuestros consumidores, clientes, empleados e inversionistas a nivel mundial.</p>
-        </div>
-    </section>
-
-    <section class="seccion-bloque">
-        <div class="bloque-img">
-            <img src="<?= base_url('assets/img/innovacion/productos.jpg') ?>" alt="Nuevos Productos">
-        </div>
-        <div class="bloque-txt">
-            <h2>Nuevos Productos</h2>
-            <p>Nuestro portafolio evoluciona constantemente para satisfacer gustos regionales:</p>
-            <ul class="lista-check">
-                <li><strong>Maseca Antojitos:</strong> Harina especial para sopes, tlacoyos y gorditas.</li>
-                <li><strong>Mission Artisan:</strong> Propuesta artesanal con beneficios nutrimentales en EE.UU.</li>
-                <li><strong>Tosty Activa-T:</strong> Snacks bajos en grasa y sodio en Costa Rica.</li>
-                <li><strong>Líneas Globales:</strong> Mission Mini Wraps (Reino Unido) y Paninas (México).</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="seccion-bloque">
-        <div class="bloque-img">
-            <img src="<?= base_url('assets/img/innovacion/maquinaria.jpg') ?>" alt="Tecnología Gruma">
-        </div>
-        <div class="bloque-txt">
-            <h2>Tecnología y Maquinaria</h2>
-            <p>Contamos con una división de tecnología que diseña y construye nuestras propias plantas de producción.</p>
-            <p><strong>Logros impresionantes:</strong> Maquinaria automatizada capaz de producir hasta 1,200 tortillas de maíz por minuto y 3,000 docenas de tortillas de trigo por hora.</p>
-            <p>Nuestra planta en <strong>Panorama City, California</strong>, es pionera al ser alimentada parcialmente por energía solar.</p>
-        </div>
-    </section>
-
-    <section class="seccion-bloque">
-        <div class="bloque-img">
-            <img src="<?= base_url('assets/img/innovacion/patentes.jpg') ?>" alt="Investigación Gruma">
-        </div>
-        <div class="bloque-txt">
-            <h2>Investigación y Desarrollo</h2>
-            <p>A lo largo de 73 años, la propiedad intelectual ha sido la piedra angular de nuestra expansión global.</p>
-            <div class="stats-patentes">
-                <div class="stat-item"><span>132</span> Patentes registradas</div>
-                <div class="stat-item"><span>15</span> Países con diseños</div>
-            </div>
-            <p style="margin-top:20px; font-style: italic; border-left: 3px solid #ccc; padding-left: 10px;">
-                "Los derechos de propiedad industrial han llevado a Gruma a la cúspide de la industria alimenticia mundial." 
-                <br>— <strong>OMPI (2003)</strong>
+            <p>
+                <?= nl2br($innovacion[0]->descripcion) ?>
             </p>
         </div>
     </section>
+
+    <?php endif; ?>
+
+
+    <!-- BLOQUES -->
+    <?php foreach($innovacion as $key => $item): ?>
+
+        <?php if($key != 0): ?>
+
+        <section class="seccion-bloque">
+
+            <div class="bloque-img">
+                <img 
+                    src="<?= base_url($item->url . $item->nombre_archivo) ?>"
+                    alt="<?= $item->titulo ?>"
+                >
+            </div>
+
+            <div class="bloque-txt">
+
+                <h2><?= $item->titulo ?></h2>
+
+                <p>
+                    <?= nl2br($item->descripcion) ?>
+                </p>
+
+            </div>
+
+        </section>
+
+        <?php endif; ?>
+
+    <?php endforeach; ?>
+
 </div>

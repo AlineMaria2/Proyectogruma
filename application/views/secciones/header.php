@@ -3,6 +3,23 @@
 <head>
 <meta charset="UTF-8">
 
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/estilos.css?v='.time()); ?>">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/estilos.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/header.css'); ?>">
@@ -13,6 +30,8 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/footer.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/productos.css'); ?>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -32,7 +51,6 @@
 
 <nav>
 <ul class="menu">
-
 
 <li class="<?= ($this->uri->segment(2) == 'productos') ? 'activo' : '' ?>">
 <a href="<?= base_url('productos') ?>">Productos</a>
@@ -69,6 +87,18 @@
 <li class="<?= ($this->uri->segment(2) == 'alta_pedidos') ? 'activo' : '' ?>">
     <a href="<?= base_url('productos/alta_pedidos') ?>" style="color: #FFD100; font-weight: bold;">
         <i class="fa-solid fa-cart-shopping"></i> Carrito
+        <span id="contador-carrito" style="
+            background: #FFD100;
+            color: #1a2e5a;
+            border-radius: 50%;
+            padding: 1px 7px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 4px;
+        "><?php
+            $carrito = $this->session->userdata('carrito');
+            echo $carrito ? count($carrito) : 0;
+        ?></span>
     </a>
 </li>
 
@@ -88,7 +118,6 @@
 </div>
 
 <ul class="menu-links">
-
 
 <li><a href="<?= base_url('productos') ?>">Productos</a></li>
 
@@ -113,6 +142,18 @@
 <li>
     <a href="<?= base_url('productos/alta_pedidos') ?>">
         <i class="fa-solid fa-cart-shopping"></i> Carrito
+        <span style="
+            background: #FFD100;
+            color: #1a2e5a;
+            border-radius: 50%;
+            padding: 1px 7px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 4px;
+        "><?php
+            $carrito = $this->session->userdata('carrito');
+            echo $carrito ? count($carrito) : 0;
+        ?></span>
     </a>
 </li>
 
