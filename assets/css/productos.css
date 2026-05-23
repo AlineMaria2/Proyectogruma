@@ -1,4 +1,4 @@
-//* =========================
+/* =========================
    PRODUCTOS
    ========================= */
 
@@ -216,10 +216,10 @@
 .btn-carrito {
     flex: 1;
     padding: 10px 16px;
-    background: #FFD100;
-    color: #007A3D;
-    border: none;
-    border-radius: 25px;
+    background: #FFD100 !important;
+    color: #007A3D !important;
+    border: none !important;
+    border-radius: 25px !important;
     font-weight: 600;
     font-size: 13px;
     cursor: pointer;
@@ -227,7 +227,50 @@
 }
 
 .btn-carrito:hover {
-    background: #e6bc00;
+    background: #e6bc00 !important;
+}
+
+/* =========================
+   SELECTOR CANTIDAD
+   ========================= */
+
+.selector-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-menos,
+.btn-mas {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    border: 2px solid #007A3D !important;
+    background: white !important;
+    color: #007A3D !important;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    line-height: 1;
+    padding: 0 !important;
+}
+
+.btn-menos:hover,
+.btn-mas:hover {
+    background: #007A3D !important;
+    color: #FFD100 !important;
+}
+
+.cantidad-valor {
+    min-width: 28px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    color: #1a1a1a;
 }
 
 /* =========================

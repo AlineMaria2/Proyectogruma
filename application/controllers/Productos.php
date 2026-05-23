@@ -11,12 +11,16 @@ class Productos extends CI_Controller {
         }
     }
 
-    public function __construct(){
-        parent::__construct();
-        $this->load->model('Productos_model');
-        $this->load->library('session');
-        $this->load->helper('url');
-    }
+     public function __construct(){
+    parent::__construct();
+
+    $this->load->model('Productos_model');
+    $this->load->model('Innovacion_model');
+    $this->load->model('Sustentabilidad_model');
+
+    $this->load->library('session');
+    $this->load->helper('url');
+}
 
     public function index(){
         $marcas = $this->Productos_model->obtener_marcas();
@@ -50,18 +54,27 @@ class Productos extends CI_Controller {
         $this->load->view('secciones/footer');
     }
 
-    public function innovacion() {
-        $this->load->view('secciones/header');
-        $this->load->view('paginas/innovacion');
-        $this->load->view('secciones/footer');
-    }
+public function innovacion() {
 
-    public function sustentabilidad() {
-        $this->load->view('secciones/header');
-        $this->load->view('paginas/sustentabilidad'); 
-        $this->load->view('secciones/footer');
-    }
+    $data['innovacion'] = $this->Innovacion_model->obtenerInnovacion();
 
+    $this->load->view('secciones/header');
+    $this->load->view('paginas/innovacion', $data);
+    $this->load->view('secciones/footer');
+}
+
+public function sustentabilidad() {
+
+    $data['sustentabilidad'] = $this->Sustentabilidad_model->obtenerSustentabilidad();
+
+    $data['banner'] = $this->Sustentabilidad_model->obtenerBanner();
+
+    $this->load->view('secciones/header');
+
+    $this->load->view('paginas/sustentabilidad', $data);
+
+    $this->load->view('secciones/footer');
+}
     public function buscar() {
         $query = $this->input->get('query');
         if (empty($query)) { redirect(base_url()); }

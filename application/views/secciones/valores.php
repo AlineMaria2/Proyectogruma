@@ -1,37 +1,11 @@
-<section class="valores">
-
-<div class="valores-header">
-
-<span class="valores-tag">VALORES</span>
-
-<h2>Nuestra Filosofía</h2>
-
-<p class="valores-frase">
-Esfuerzo, Compromiso, Perseverancia y Trascendencia
-</p>
-
-<p class="valores-sub">
-Los principios que definen quiénes somos y cómo trabajamos cada día.
-</p>
-
-</div>
-
-<div class="valores-linea"></div>
-
-<div class="valores-container">
-
-<?php foreach($valores as $v){ ?>
-
-<div class="valor-card">
-
-<h4><?= $v->titulo ?></h4>
-
-<p><?= $v->descripcion ?></p>
-
-</div>
-
-<?php } ?>
-
-</div>
-
+<section class="seccion-contenedor-maestro">
+    <h2 class="titulo-seccion-maestro">Nuestros Valores</h2>
+    <div class="grid-tarjetas-maestro">
+        <?php foreach($valores as $valor): ?>
+            <div class="tarjeta-estilo-maestro">
+                <h3 style="color:#007A3D;"><?= $valor->titulo ?></h3>
+                <p><?= $valor->descripcion ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </section>

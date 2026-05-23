@@ -2,6 +2,45 @@
    FILOSOFIA (MISION VISION OBJETIVO)
    ========================= */
 
+.filosofia {
+    background: linear-gradient(135deg, #f8fdf8 0%, #eaf4ea 100%);
+    padding: 80px 60px;
+}
+
+.filosofia-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.filosofia-header h2 {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #007A3D;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.filosofia-header h3 {
+    font-size: 38px;
+    color: #1a2e5a;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.filosofia-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+.filosofia-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .filosofia-card {
     background: white;
     padding: 35px;
@@ -9,26 +48,38 @@
     width: 320px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     transition: 0.35s;
-    position: relative;
-    /* Esto centra TODO lo que venga de la base de datos */
-    text-align: center; 
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-top: 5px solid #007A3D;
+}
+
+.filosofia-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 122, 61, 0.15);
 }
 
 .filosofia-card h4 {
     font-size: 22px;
+    color: #1a2e5a;
     margin-bottom: 15px;
     width: 100%;
-    text-align: center; /* Asegura el centrado del título PHP */
+    text-align: center;
+}
+
+.filosofia-card img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 15px;
 }
 
 .filosofia-card p {
     line-height: 1.7;
     color: #444;
     width: 100%;
-    text-align: center; /* Asegura el centrado del texto largo PHP */
+    text-align: center;
     margin: 0 auto;
 }
 
@@ -36,18 +87,81 @@
    VALORES
    ========================= */
 
+.valores {
+    background: linear-gradient(135deg, #1a2e5a 0%, #0d1e3d 100%);
+    padding: 80px 60px;
+}
+
+.valores-header {
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+    text-align: center;
+}
+
+.valores-tag {
+    display: inline-block;
+    letter-spacing: 4px;
+    color: #FFD100;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.valores-header h2 {
+    font-size: 38px;
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.valores-frase {
+    color: #FFD100;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.valores-sub {
+    color: #a0b4d0;
+    font-size: 15px;
+}
+
+.valores-linea {
+    width: 80px;
+    height: 4px;
+    background: #FFD100;
+    margin: 0 auto 50px auto;
+    border-radius: 2px;
+}
+
+.valores-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .valor-card {
     background: rgba(255,255,255,0.06);
-    padding: 30px;
+    padding: 35px 30px;
     border-radius: 15px;
-    width: 300px;
+    width: 280px;
     border: 1px solid rgba(255,255,255,0.15);
+    border-top: 4px solid #FFD100;
     transition: 0.3s;
-    /* Forzado de centrado para datos dinámicos */
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.valor-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
 
 .valor-card h4 {
@@ -65,9 +179,24 @@
     text-align: center;
 }
 
-/* Ajuste para el header de valores si los textos vienen de BD */
-.valores-header {
-    max-width: 900px;
-    margin: 0 auto 60px auto;
-    text-align: center;
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 900px) {
+    .filosofia,
+    .valores {
+        padding: 60px 20px;
+    }
+
+    .filosofia-container,
+    .valores-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filosofia-card,
+    .valor-card {
+        width: 90%;
+    }
 }

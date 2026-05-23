@@ -1,35 +1,11 @@
-<section class="filosofia">
-
-    <div class="filosofia-header">
-
-        <h2>Filosofía corporativa</h2>
-
-        <h3>Misión, Visión y Objetivo</h3>
-
-        <p>Los pilares que guían cada decisión y cada producto que llevamos a tu mesa.</p>
-
-    </div>
-
-    <div class="filosofia-container">
-
-        <?php foreach($pilares as $p){ ?>
-
-            <div class="filosofia-card">
-
-                <h4><?= $p->titulo ?></h4>
-
-                <img 
-                    src="<?= base_url('assets/img/historia'.$p->imagen) ?>" 
-                    alt="<?= $p->titulo ?>"
-                    width="200"
-                >
-
-                <p><?= $p->descripcion ?></p>
-
+<section class="seccion-contenedor-maestro">
+    <h2 class="titulo-seccion-maestro">Filosofía Corporativa</h2>
+    <div class="grid-tarjetas-maestro">
+        <?php foreach($filosofia as $item): ?>
+            <div class="tarjeta-estilo-maestro">
+                <h3 style="color:#007A3D;"><?= $item->titulo ?></h3>
+                <p><?= $item->descripcion ?></p>
             </div>
-
-        <?php } ?>
-
+        <?php endforeach; ?>
     </div>
-
 </section>
